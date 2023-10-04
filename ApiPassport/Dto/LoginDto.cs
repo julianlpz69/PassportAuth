@@ -11,6 +11,6 @@ namespace ApiPassport.Dto
         [Required]
         public string Username { get; set; }
         [Required]
-        public string Password { get; set; }
+        public string UserPassword { get; set; }
     }
 }

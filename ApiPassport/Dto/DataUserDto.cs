@@ -8,14 +8,14 @@ namespace ApiPassport.Dto
 {
     public class DataUserDto
     {
-        public string Message { get; set; }
-        public bool IsAuthenticated { get; set; }
+        public string Mensaje { get; set; }
+        public bool EstadoAutenticado { get; set; }
         public string UserName { get; set; }
-        public string Email { get; set; }
-        public List<string> Roles { get; set; }
-        public string Token { get; set; }
+        public string UserEmail { get; set; }
+        public List<string> UserRoles { get; set; }
+        public string UserToken { get; set; }
          [JsonIgnore] // ->this attribute restricts the property to be shown in the result
         public string RefreshToken { get; set; }
-        public DateTime RefreshTokenExpiration { get; set; }
+        public DateTime RefreshTokenExpiry { get; set; }
     }
 }

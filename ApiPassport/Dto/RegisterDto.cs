@@ -9,10 +9,10 @@ namespace ApiPassport.Dto
     public class RegisterDto
     {
         [Required]
-        public string Email { get; set; }
+        public string UserEmail { get; set; }
         [Required]
-        public string Username { get; set; }
+        public string UserName { get; set; }
         [Required]
-        public string Password { get; set; }
+        public string UserPassword { get; set; }
     }
 }

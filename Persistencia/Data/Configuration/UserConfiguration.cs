@@ -14,20 +14,20 @@ namespace Persistencia.Data.Configuration
         {
             {
                 builder.ToTable("Usuario");
-                 builder.Property(p => p.Username)
+                 builder.Property(p => p.UserName)
                 .HasColumnName("username")
                 .HasColumnType("varchar")
                 .HasMaxLength(50)
                 .IsRequired();
 
 
-                builder.Property(p => p.Password)
+                builder.Property(p => p.UserPassword)
                .HasColumnName("password")
                .HasColumnType("varchar")
                .HasMaxLength(255)
                .IsRequired();
 
-                builder.Property(p => p.Email)
+                builder.Property(p => p.UserEmail)
                 .HasColumnName("email")
                 .HasColumnType("varchar")
                 .HasMaxLength(100)
