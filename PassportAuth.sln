@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{56D70416-C27A-45B7-9087-FC6653FF100D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistencia", "Persistencia\Persistencia.csproj", "{AC3B5977-329A-4206-BB02-EBD4F72FEA23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiPassport", "ApiPassport\ApiPassport.csproj", "{0EB90AF4-9B7A-4361-9C35-F31752C12E95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56D70416-C27A-45B7-9087-FC6653FF100D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56D70416-C27A-45B7-9087-FC6653FF100D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56D70416-C27A-45B7-9087-FC6653FF100D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56D70416-C27A-45B7-9087-FC6653FF100D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC3B5977-329A-4206-BB02-EBD4F72FEA23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC3B5977-329A-4206-BB02-EBD4F72FEA23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC3B5977-329A-4206-BB02-EBD4F72FEA23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC3B5977-329A-4206-BB02-EBD4F72FEA23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EB90AF4-9B7A-4361-9C35-F31752C12E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EB90AF4-9B7A-4361-9C35-F31752C12E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EB90AF4-9B7A-4361-9C35-F31752C12E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EB90AF4-9B7A-4361-9C35-F31752C12E95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
