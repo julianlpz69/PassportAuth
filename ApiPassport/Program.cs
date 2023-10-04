@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Persistencia.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
@@ -15,6 +18,11 @@ builder.Services.AddAuthentication().AddGoogle(googleOptions =>
         googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
     });
 
+builder.Services.AddDbContext<ApiPassportContext>(options=>
+{
+    string connectionString = builder.Configuration.GetConnectionString("ConexMysql");
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
 
 var app = builder.Build();
 

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ApiPassport.Dto
 {
-    public class RegisterDto
+    public class AddRoleDto
     {
-        [Required]
-        public string Email { get; set; }
         [Required]
         public string Username { get; set; }
         [Required]
         public string Password { get; set; }
+        [Required]
+        public string Role { get; set; }
     }
 }
