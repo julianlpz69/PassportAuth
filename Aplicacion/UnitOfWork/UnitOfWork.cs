@@ -7,8 +7,9 @@ using Dominio.Entities;
 using Dominio.Interface;
 using Persistencia.Data;
 
-namespace Aplicacion.UnitOfWork
-{
+
+namespace Aplicacion.UnitOfWork;
+
     public class UnitOfWork : IUnitOfWork, IDisposable
 {
   
@@ -58,4 +59,3 @@ namespace Aplicacion.UnitOfWork
     }
 }
 
-}
