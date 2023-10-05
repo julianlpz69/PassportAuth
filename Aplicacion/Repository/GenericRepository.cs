@@ -1,7 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Linq;
 using System.Threading.Tasks;
+using Dominio.Entities;
+using Dominio.Interface;
+using Microsoft.EntityFrameworkCore;
+using Persistencia.Data;
 
 
 namespace Aplicacion.Repository
