@@ -1,5 +1,6 @@
 using System.Text;
 using ApiPassport.Services;
+using Aplicacion.UnitOfWork;
 using Dominio.Entities;
 using Dominio.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -36,7 +37,5 @@ namespace ApiPassport.Extensions
         
     }
 
-    internal class UnitOfWork
-    {
-    }
+  
 }

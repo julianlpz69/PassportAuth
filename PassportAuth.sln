@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistencia", "Persistenci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiPassport", "ApiPassport\ApiPassport.csproj", "{0EB90AF4-9B7A-4361-9C35-F31752C12E95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplicacion", "Aplicacion\Aplicacion.csproj", "{381BDCB0-DB75-4869-BCC3-93906FD400A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{0EB90AF4-9B7A-4361-9C35-F31752C12E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EB90AF4-9B7A-4361-9C35-F31752C12E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EB90AF4-9B7A-4361-9C35-F31752C12E95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{381BDCB0-DB75-4869-BCC3-93906FD400A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{381BDCB0-DB75-4869-BCC3-93906FD400A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{381BDCB0-DB75-4869-BCC3-93906FD400A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{381BDCB0-DB75-4869-BCC3-93906FD400A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
