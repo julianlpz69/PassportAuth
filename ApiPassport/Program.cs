@@ -13,14 +13,14 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddAuthentication()
-.AddGoogle(googleOptions =>
+/* .AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-})
+}) */
 .AddTwitter(twitterOptions =>{
-    twitterOptions.ConsumerKey = builder.Configuration.GetSection("TwitterAuthSettings").GetValue<string>("ApiKey");
-    twitterOptions.ConsumerSecret = builder.Configuration.GetSection("TwitterAuthSettings").GetValue<string>("ApiSecret");
+    twitterOptions.ConsumerKey = configuration["TwitterAuthSettings:ApiKey"];
+    twitterOptions.ConsumerSecret = configuration["TwitterAuthSettings:ApiSecret"];
 });
 
 builder.Services.AddDbContext<ApiPassportContext>(options=>
@@ -38,10 +38,30 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseRouting();
+
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+app.MapControllerRoute(
+    name: "default",
+    pattern:"{controller=Home}/{action=Index}/{id?}"
+);
+app.MapControllerRoute(
+    name: "twitter",
+    pattern: "account/twitterlogin",
+    defaults: new { controller = "Account", action = "TwitterLogin" });
+
+app.MapControllerRoute(
+name: "twitter-callback",
+pattern: "account/twittercallback",
+defaults: new { controller = "Account", action = "TwitterCallback" });
+
 
 app.Run();
