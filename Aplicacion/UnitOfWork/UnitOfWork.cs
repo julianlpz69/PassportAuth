@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aplicacion.Repository;
-using Dominio.Entities;
 using Dominio.Interface;
 using Persistencia.Data;
 
-namespace Aplicacion.UnitOfWork
-{
+
+
+
+namespace Aplicacion.UnitOfWork;
+
     public class UnitOfWork : IUnitOfWork, IDisposable
 {
   
-    private readonly ApiPassportContext _context; 
+    private readonly ApiPassportContext _context;
 	private IRol _roles;
     private IUser _users;
     public UnitOfWork(ApiPassportContext context){
@@ -58,4 +60,3 @@ namespace Aplicacion.UnitOfWork
     }
 }
 
-}

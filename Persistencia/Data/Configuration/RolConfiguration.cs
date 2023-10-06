@@ -18,6 +18,11 @@ namespace Persistencia.Data.Configuration
             .HasColumnType("varchar")
             .HasMaxLength(50)
             .IsRequired();
+
+
+            builder.HasData(
+                new Rol {Id = 1, NombreRol = "Empleado"}
+            );
         }
     }
 }
