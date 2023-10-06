@@ -1,3 +1,4 @@
+using ApiPassport.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Persistencia.Data;
 
@@ -10,18 +11,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.ConfigureCors();
+builder.Services.AddAplicacionServices();
+builder.Services.AddJwt(builder.Configuration);
 
 
-builder.Services.AddAuthentication()
-.AddGoogle(googleOptions =>
-{
-    googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
-    googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-})
-.AddTwitter(twitterOptions =>{
-    twitterOptions.ConsumerKey = builder.Configuration.GetSection("TwitterAuthSettings").GetValue<string>("ApiKey");
-    twitterOptions.ConsumerSecret = builder.Configuration.GetSection("TwitterAuthSettings").GetValue<string>("ApiSecret");
-});
 
 builder.Services.AddDbContext<ApiPassportContext>(options=>
 {
@@ -37,6 +31,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 
