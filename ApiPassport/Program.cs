@@ -1,4 +1,8 @@
 using ApiPassport.Extensions;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistencia.Data;
 
@@ -17,6 +21,37 @@ builder.Services.AddJwt(builder.Configuration);
 
 
 
+
+
+ builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+            })
+            .AddCookie()
+            .AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
+             {
+                 options.ClientId = "26323881431-041gl1v4ihdl1lgkotci27s41vdaiim6.apps.googleusercontent.com";
+                 options.ClientSecret = "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";
+             });
+
+
+
+             
+             
+
+
+    
+    
+
+
+
+
+
+
+
+
+
 builder.Services.AddDbContext<ApiPassportContext>(options=>
 {
     string connectionString = builder.Configuration.GetConnectionString("ConexMysql");
@@ -32,9 +67,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

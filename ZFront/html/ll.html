@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión con Google</title>
+</head>
+<body>
+    <h1>Iniciar sesión con Google</h1>
+    <a id="loginButton">Iniciar sesión con Google</a>
+    <script>
+
+
+
+
+
+document.getElementById('loginButton').addEventListener('click', function() {
+    // Redirigir al usuario a la acción 'Login' de TuControlador
+    window.location.href = '../../ApiPassport/Controllers/HomeController/Login';
+});
+
+
+fetch('../../ApiPassport/Controllers/HomeController/GoogleResponse')
+    .then(response => response.json())
+    .then(data => {
+        var resultDiv = document.getElementById('result');
+        resultDiv.innerText = JSON.stringify(data, null, 2);
+    })
+    .catch(error => console.error('Error:', error));
+
+
+
+
+
+    </script>
+</body>
+</html>

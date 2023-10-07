@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión con Google</title>
+    <style>
+        /* Estilos básicos para el botón de inicio de sesión con Google */
+        .google-login-button {
+            background-color: #4285F4;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .google-login-button:hover {
+            background-color: #3a78f8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Iniciar sesión con Google</h1>
+    <!-- Botón de inicio de sesión con Google -->
+    <button class="google-login-button" onclick="onGoogleSignIn()">Iniciar sesión con Google</button>
+
+    <!-- Script para cargar la plataforma de inicio de sesión de Google -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        // Esta función se llamará cuando la API de Google se haya cargado completamente
+        function handleGoogleApiLoad() {
+            gapi.load('auth2', function() {
+                // Inicializa la API de autenticación de Google
+                gapi.auth2.init().then(function() {
+                    console.log('API de Google cargada correctamente.');
+                });
+            });
+        }
+
+        function onGoogleSignIn() {
+            // Acciones después de iniciar sesión con Google
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signIn().then(function(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId());
+                console.log('Nombre: ' + profile.getName());
+                console.log('Correo electrónico: ' + profile.getEmail());
+                // ...
+            });
+        }
+    </script>
+</body>
+</html>
