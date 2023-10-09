@@ -1,15 +1,11 @@
 using ApiPassport.Extensions;
+using Auth0.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistencia.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-var configuration = builder.Configuration;
-
-// Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -20,62 +16,54 @@ builder.Services.AddAplicacionServices();
 builder.Services.AddJwt(builder.Configuration);
 
 
-
-
-
- builder.Services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
-            })
-            .AddCookie()
-            .AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
-             {
-                 options.ClientId = "26323881431-041gl1v4ihdl1lgkotci27s41vdaiim6.apps.googleusercontent.com";
-                 options.ClientSecret = "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";
-             });
-
-
-
-             
-             
-
-
-    
-    
-
-
-
-
-
-
-
-
-
 builder.Services.AddDbContext<ApiPassportContext>(options=>
 {
     string connectionString = builder.Configuration.GetConnectionString("ConexMysql");
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
+// Add services to the container.
+builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+                .AddCookie(options =>
+                {
+                    options.Cookie.Name = "MyAppCookiee";
+                    options.LoginPath = "/account/google-login";
+                })
+                .AddGoogle(options =>
+                {
+                    options.ClientId = "26323881431-6dan9v1gbs8qk26a1ffcqrjiqjklv1ph.apps.googleusercontent.com";
+                    options.ClientSecret = "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";
+                    options.ClaimActions.MapJsonKey("urn:google:picture", "picture", "url");
+            
+                });
+
+     builder.Services.AddControllersWithViews();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseExceptionHandler("/Home/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
 
 
 app.UseCors("CorsPolicy");
-
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
 
 app.UseAuthentication();
-
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

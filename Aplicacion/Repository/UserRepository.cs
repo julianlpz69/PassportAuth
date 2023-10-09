@@ -26,12 +26,12 @@ namespace Aplicacion.Repository
             .FirstOrDefaultAsync(u => u.RefreshTokens.Any(t => t.Token == refreshToken));
     }
 
-    public async Task<User> GetByUsernameAsync(string username)
+    public async Task<User> GetByUserGmailAsync(string userEmail)
     {
         return await _context.Users
             .Include(u => u.Rols)
             .Include(u => u.RefreshTokens)
-            .FirstOrDefaultAsync(u => u.UserName.ToLower() == username.ToLower());
+            .FirstOrDefaultAsync(u => u.UserEmail.ToLower() == userEmail.ToLower());
     }
 }
 }

@@ -9,7 +9,7 @@ namespace ApiPassport.Dto
     public class AddRoleDto
     {
         [Required]
-        public string UserName { get; set; }
+        public string UserEmail { get; set; }
         [Required]
         public string UserPassword { get; set; }
         [Required]

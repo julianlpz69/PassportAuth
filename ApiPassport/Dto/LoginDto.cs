@@ -9,7 +9,7 @@ namespace ApiPassport.Dto
     public class LoginDto
     {
         [Required]
-        public string Username { get; set; }
+        public string UserEmail { get; set; }
         [Required]
         public string UserPassword { get; set; }
     }

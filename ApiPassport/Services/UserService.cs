@@ -80,7 +80,7 @@ namespace ApiPassport.Services
     {
         DataUserDto dataUserDto = new DataUserDto();
         var user = await _unitOfWork.Users
-                    .GetByUsernameAsync(model.Username);
+                    .GetByUserGmailAsync(model.UserEmail);
 
         if (user == null)
         {
@@ -127,6 +127,7 @@ namespace ApiPassport.Services
 
             return dataUserDto;
         }
+
         dataUserDto.RefreshToken = "";
             dataUserDto.RefreshTokenExpiry = DateTime.Now;
             dataUserDto.UserToken = "";
@@ -145,10 +146,10 @@ namespace ApiPassport.Services
     {
 
         var user = await _unitOfWork.Users
-                    .GetByUsernameAsync(model.UserName);
+                    .GetByUserGmailAsync(model.UserEmail);
         if (user == null)
         {
-            return $"User {model.UserName} does not exists.";
+            return $"Email {model.UserEmail} does not exists.";
         }
 
         var result = _passwordHasher.VerifyHashedPassword(user, user.UserPassword, model.UserPassword);
@@ -171,7 +172,7 @@ namespace ApiPassport.Services
                     await _unitOfWork.SaveAsync();
                 }
 
-                return $"Role {model.UserRol} added to user {model.UserName} successfully.";
+                return $"Role {model.UserEmail} added to user {model.UserEmail} successfully.";
             }
 
             return $"Role {model.UserRol} was not found.";
