@@ -9,5 +9,6 @@ namespace Dominio.Interface;
     {
         IRol Roles { get; }
         IUser Users { get; }
+        ILoginUser LoginUsers { get; }
         Task<int> SaveAsync(); 
     }

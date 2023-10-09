@@ -1,6 +1,7 @@
 using System.Text;
 using ApiPassport.Helpers;
 using ApiPassport.Services;
+using Aplicacion.Repository;
 using Aplicacion.UnitOfWork;
 using Dominio.Entities;
 using Dominio.Interface;
@@ -34,6 +35,7 @@ namespace ApiPassport.Extensions
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ILoginUser, LoginUserRepository>();
         }
 
 

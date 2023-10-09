@@ -16,6 +16,7 @@ namespace Aplicacion.UnitOfWork;
   
     private readonly ApiPassportContext _context;
 	private IRol _roles;
+    private ILoginUser _login_user;
     private IUser _users;
     public UnitOfWork(ApiPassportContext context){
         _context = context;
@@ -32,6 +33,18 @@ namespace Aplicacion.UnitOfWork;
                 _roles = new RolRepository(_context);
             }
             return _roles;
+        }
+    }
+
+     public ILoginUser LoginUsers
+    {
+        get
+        {
+            if (_login_user == null)
+            {
+                _login_user = new LoginUserRepository(_context);
+            }
+            return _login_user;
         }
     }
 

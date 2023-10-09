@@ -16,6 +16,7 @@ namespace Persistencia.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Rol> Rols { get; set; }
         public DbSet<UserRol> UsersRols { get; set; }
+        public DbSet<LoginUser> LoginUser { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

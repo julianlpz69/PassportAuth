@@ -11,7 +11,7 @@ using Persistencia.Data;
 namespace Persistencia.Data.Migrations
 {
     [DbContext(typeof(ApiPassportContext))]
-    [Migration("20231006191540_SegundaMigracion")]
+    [Migration("20231009022023_SegundaMigracion")]
     partial class SegundaMigracion
     {
         /// <inheritdoc />
@@ -21,6 +21,28 @@ namespace Persistencia.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("Dominio.Entities.LoginUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Picture")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("login_user", (string)null);
+                });
 
             modelBuilder.Entity("Dominio.Entities.RefreshToken", b =>
                 {
