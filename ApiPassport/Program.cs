@@ -23,7 +23,7 @@ builder.Services.AddDbContext<ApiPassportContext>(options=>
 });
 
 // Add services to the container.
-builder.Services.AddAuthentication(options =>
+builder.Services.AddAuthentication(options =>  
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             })
@@ -40,7 +40,7 @@ builder.Services.AddAuthentication(options =>
             
                 });
 
-     builder.Services.AddControllersWithViews();
+   
 
 var app = builder.Build();
 
